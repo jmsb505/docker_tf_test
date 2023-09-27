@@ -1,0 +1,15 @@
+version: '1.0'
+services:
+  jupyter-labs:
+    build: .
+    ports:
+      - 8888:8888
+    volumes:
+      - ./tf-knugs:/tf-knugs 
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: 1
+            capabilities: [gpu]
